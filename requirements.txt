@@ -9,3 +9,4 @@ gunicorn==19.9.0
 uvloop
 httptools
 opencv-contrib-python-headless
+opencv-python
