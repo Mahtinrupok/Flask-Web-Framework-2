@@ -1,7 +1,8 @@
-from flask import Flask,render_template,Response
+import uvicorn
+from fastapi import FastAPI
 import cv2
 
-app=Flask(__name__)
+app=FastAPI(__name__)
 camera=cv2.VideoCapture(0)
 
 def generate_frames():
@@ -27,6 +28,8 @@ def index():
 def video():
     return Response(generate_frames(),mimetype='multipart/x-mixed-replace; boundary=frame')
 
-if __name__=="__main__":
-    app.run(debug=True)
+# 5. Run the API with uvicorn
+#    Will run on http://127.0.0.1:8000
+if __name__ == '__main__':
+    uvicorn.run(app, host='127.0.0.1', port=8000)
 
